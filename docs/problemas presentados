@@ -1,0 +1,10 @@
+Hola, tengo un problema con el ansible, tras levantar la maquina con el Vagrant File y ejecutar mi Playbook y transferirle los archivos y la configuración, los cuales proceden de una máquina vsftpd que funciona correctamente, le hacemos un sudo netstat -putan y vemos que escucha, obviamente, si no escuchara no podríamos haber entrado para que nos echen inmediatamente después.
+
+Dudas:
+
+-¿Tiene que ver con el Firewall?
+-¿Que tengo que cambiar en el vsftpd.conf según tu criterio?
+-¿Tiene que ver con los permisos de la carpeta?
+
+Voy a seguir intentandolo
+

@@ -1,0 +1,88 @@
+leer antes el leeme:
+
+1º Instalar vsftpd:
+
+apt-get install vsftpd
+
+2º Instalar Openssl:
+
+apt-get install openssl
+
+
+3ºCrear /etc/ssl/private con chmod 700
+
+mkdir -p /etc/ssl/private
+chmod 700 /etc/ssl/private
+
+4º Crear o pasar certificados
+
+openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+
+5º pasar archivo de configuración a la máquina
+ 
+6º Revisar archivo
+
+7º Reiniciar vsftpd 
+
+8º Crear la carpeta /var/ftproot
+
+9ºAñadir usuario
+
+10º Revisar que los usuarios que se creen estén enjaulados.
+
+11º Revisar puertos abiertos
+
+-----------------------------------------------------------------------------------------------------
+
+
+
+https://www.howtoforge.com/tutorial/setting-up-vsftpd-tls-on-debian-8-jessie/
+
+
+¿Como debería ser el archivo de configuración de vsftpd?
+
+Cambia los siguientes valores por estos:
+
+anonymous_enable=NO             # disable  anonymous login
+local_enable=YES		# permit local logins
+write_enable=YES		# enable FTP commands which change the filesystem
+local_umask=022		        # value of umask for file creation for local users
+dirmessage_enable=YES	        # enable showing of messages when users first enter a new directory
+xferlog_enable=YES		# a log file will be maintained detailing uploads and downloads
+connect_from_port_20=YES        # use port 20 (ftp-data) on the server machine for PORT style connections
+xferlog_std_format=YES          # keep standard log file format
+listen=NO   			# prevent vsftpd from running in standalone mode
+listen_ipv6=YES		        # vsftpd will listen on an IPv6 socket instead of an IPv4 one
+pam_service_name=vsftpd         # name of the PAM service vsftpd will use
+userlist_enable=YES  	        # enable vsftpd to load a list of usernames
+tcp_wrappers=YES  		# turn on tcp wrappers
+
+userlist_enable=YES                   # vsftpd will load a list of usernames, from the filename given by userlist_file
+userlist_file=/etc/vsftpd.userlist    # stores usernames.
+userlist_deny=NO   
+
+chroot_local_user=YES
+allow_writeable_chroot=YES
+
+----Configura homes de usuarios ftp----
+
+
+
+
+https://www.tecmint.com/install-ftp-server-in-centos-7/
+
+
+
+
+--------------------------- Usuarios virtuales mysql en vsftpd----------------------------------------
+
+
+
+
+https://www.howtoforge.com/virtual-hosting-with-vsftpd-and-mysql-on-ubuntu-12.04
+
+
+
+
+
+

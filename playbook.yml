@@ -1,0 +1,35 @@
+---
+ 
+- hosts: ftp
+  tasks:
+
+   - name: insertar fila en /etc/shells
+     lineinfile: dest=/etc/shells line="/bin/false" 
+
+   - name: transfer vsftpd configuration
+     template: src=vsftpd.conf dest=/etc/vsftpd.conf owner=root group=root mode=0644
+
+   - name: transfer openssl private key
+     template: src=key.key dest=/etc/ssl/private/ssl.key owner=root group=root mode=0644
+
+   - name: transfer openssl cert
+     template: src=pem.pem dest=/etc/ssl/certs/ssl.pem owner=root group=root mode=0644
+     
+   - name: crear usuario vsftpd
+     user: name=vsftpd shell=/bin/false password=vsftpd
+
+   - name: transfer vsftpd chroot list
+     template: src=vsftpd.chroot_list dest=/etc/vsftpd.chroot_list owner=root group=root mode=0644
+   
+   - name: Install vsftpd
+     apt: pkg=vsftpd state=installed update_cache=true
+
+   - name: Install openssl
+     apt: pkg=openssl state=installed update_cache=true  
+     notify: Start vsftpd
+
+  handlers:
+ 
+    - name: Start vsftpd
+      service: name=vsftpd state=started
+
