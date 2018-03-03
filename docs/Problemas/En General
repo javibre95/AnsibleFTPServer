@@ -1,0 +1,6 @@
+No se asignarle contraseña a un usuario via ansible porque te pide un hash , solución chapucera es usar un sudo passwd dentro de la máquina.
+
+Aunque haya logrado enjaular al usuario, no he sido capaz de hacerlo de manera automática.
+El resto de la documentación asi como varias paginas de google explican como solucionar el problema.
+
+Recuerdo que esto no es la versión definitiva del proyecto pero tras 2 dias y medio (unas 7-10 horas) dando tumbos, me he cansado. Si sabeis una solución rápida y sencilla a partir de mis materiales podeis mandarme un correo a javibre95@gmail.com con el asunto GithubAnsibleVSFTPD o similar

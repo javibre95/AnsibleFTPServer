@@ -1,1 +1,86 @@
-holaaa
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="http://html5-templates.com/" />
+    <title>FTP Vagrant Ansible</title>
+    <meta name="description" content="Simple HTML5 Page layout template with header, footer, sidebar etc.">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+	<header>
+	<div id="logo"><img src="logo-departamento.jpg">FTP Ansible + Vagrant (Beta) </div>
+		<nav>  
+			<ul>
+				<li><a href="https://github.com/javibre95/AnsibleFTPServer">Proyecto</a>
+				<li><a href="configuracion.html">Configuración</a>
+				<li><a href="aboutupdate.html">Acerca De</a>
+				<li><a href="tutorialandusefullinks.html">Documentos</a>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<strong>Realizado por Javier Rodríguez Daza: javibre95@gmail.com </strong>
+	</section>
+	<section id="pageContent">
+		<main role="main">
+			<article>
+				<h2>¿Qué es FTP? </h2>
+<p>Según Wikipedia, El Protocolo de transferencia de archivos (en inglés File Transfer Protocol o FTP), es un protocolo de red para la transferencia de archivos entre sistemas conectados a una red TCP (Transmission Control Protocol), basado en la arquitectura cliente-servidor. Desde un equipo cliente se puede conectar a un servidor para descargar archivos desde él o para enviarle archivos, independientemente del sistema operativo utilizado en cada equipo.</p> <br>
+
+<p>El servicio FTP es ofrecido por la capa de aplicación del modelo de capas de red TCP/IP al usuario, utilizando normalmente el puerto de red 20 y el 21. Un problema básico de FTP es que está pensado para ofrecer la máxima velocidad en la conexión, pero no la máxima seguridad, ya que todo el intercambio de información, desde el login y password del usuario en el servidor hasta la transferencia de cualquier archivo, se realiza en texto plano sin ningún tipo de cifrado, con lo que un posible atacante puede capturar este tráfico, acceder al servidor y/o apropiarse de los archivos transferidos.</p> <br>
+
+<p> Para solucionar este problema son de gran utilidad aplicaciones como SCP y SFTP, incluidas en el paquete SSH, que permiten transferir archivos pero cifrando todo el tráfico. </p> <br>
+
+<p> Este proyecto usa <a href="https://security.appspot.com/vsftpd.html" target="_blank" title="VSFTPD">VSFTPD</a>  como servicio de ftp, aunque puedes usar otros como PROFTP </p> <br>
+
+
+			</article>
+			<article>
+				<h2>¿Qué es Ansible ?</h2>
+				<p>Ansible es una plataforma de software libre para configurar y administrar computadoras. Combina instalación multi-nodo, ejecuciones de tareas ad hoc y administración de configuraciones. Adicionalmente, Ansible es categorizado como una herramienta de orquestación.<p> <br>
+
+<p>Maneja nodos a través de SSH y no requiere ningún software remoto adicional (excepto Python 2.4 o posterior​ para instalarlo).</p><br>
+
+<p>Dispone de módulos que trabajan sobre JSON y la salida estándar puede ser escrita en cualquier lenguaje. Nativamente utiliza YAML para describir configuraciones reusables de los sistemas.</p><br>
+
+<p> Ansible se puede descargar desde su <a href="https://www.ansible.com/" target="_blank" title="Ansible">página principal</a> pero requiere <a href="https://www.python.org/downloads/" target="_blank" title="Python"> python </a>  para que funcione correctamente</p>
+			</article>
+			<article>
+				<h2>¿Qué es Vagrant?</h2>
+				<p>Vagrant es una herramienta para la creación y configuración de entornos de desarrollo virtualizados.</p><br>
+
+<p>Originalmente se desarrolló para VirtualBox y sistemas de configuración tales como Chef, Salt y Puppet. Sin embargo desde la versión 1.1 Vagrant es capaz de trabajar con múltiples proveedores, como VMware, Amazon EC2, LXC, DigitalOcean, etc.​ Aunque Vagrant se ha desarrollado en Ruby se puede usar en multitud de proyectos escritos en otros lenguajes, tales como PHP, Python, Java, C# y JavaScript.​
+</p><br>
+
+<p><a href="https://www.vagrantup.com/" target="_blank" title="Vagrant"> Vagrant se puede descargar desde su página principal</a></p>
+			</article>
+			<article>
+				<h2>¿Puedo usar este proyecto?</h2>
+				<p> Claro.Esto es simplemente un ejercicio de clase para el módulo de Administración de Sistemas Operativos del Ciclo de Administración de Sistemas Informáticos en Red, pero advierto que debido a mi poco tiempo de maniobra y mi falta de experiencia el proyecto no está perfeccionado a día de hoy (3-3-2018), veáse problemas. </p>
+			</article>
+		</main>
+		<aside>
+			<div><img src="ftp-carpetas.jpg" width="300" height="210"></div>
+			<div><img src="Ansible.jpeg" width="300" height="210"></div>
+			<div><img src="Vagrant.png" width="300" height="210"></div>
+			<div><p>3-3-2018,Versión 0.1:</p>
+			     <p>Este proyecto está por perfeccionarse</p>
+			     <p>Usarlo con cautela</p></div>
+		</aside>
+	</section>
+	<footer>
+		<p>&copy; Plantilla editada. original realizada por html5-templates | <a href="http://html5-templates.com/" target="_blank" rel="nofollow">HTML5 Templates</a></p>
+		<address>
+			Contact: <a href="mailto:me@htmlg.com">Mail me</a>
+		</address>
+	</footer>
+
+
+</body>
+
+</html>

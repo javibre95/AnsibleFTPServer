@@ -1,3 +1,4 @@
+
 ---
  
 - hosts: ftp
@@ -16,7 +17,7 @@
      template: src=pem.pem dest=/etc/ssl/certs/ssl.pem owner=root group=root mode=0644
      
    - name: crear usuario vsftpd
-     user: name=vsftpd shell=/bin/false password=vsftpd
+     user: name=vsftpd shell=/bin/sh
 
    - name: transfer vsftpd chroot list
      template: src=vsftpd.chroot_list dest=/etc/vsftpd.chroot_list owner=root group=root mode=0644
@@ -28,8 +29,11 @@
      apt: pkg=openssl state=installed update_cache=true  
      notify: Start vsftpd
 
+  
   handlers:
  
     - name: Start vsftpd
       service: name=vsftpd state=started
+
+
 

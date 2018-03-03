@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="http://html5-templates.com/" />
+    <title>FTP Vagrant Ansible, Conf</title>
+    <meta name="description" content="Simple HTML5 Page layout template with header, footer, sidebar etc.">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+	<header>
+	<div id="logo"><img src="logo-departamento.jpg">FTP Ansible + Vagrant (Beta) </div>
+		<nav>  
+			<ul>
+				<li><a href="https://github.com/javibre95/AnsibleFTPServer">Proyecto</a>
+				<li><a href="index.html">Home</a>
+				<li><a href="aboutupdate.html">Acerca De</a>
+				<li><a href="tutorialandusefullinks.html">Documentos</a>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<strong>Realizado por Javier Rodríguez Daza: javibre95@gmail.com </strong>
+	</section>
+	<section id="pageContent">
+		<main role="main">
+			<article>
+				<h2>¿De que archivos se compone el proyecto?</h2>
+<p>El proyecto se compone de un archivo hosts con dos máquinas, por si alguien, como por ejemplo yo, quiera expandir el servidor vsftpd para que tenga usuarios virtuales configurando mysql en ella; De los archivos de configuración del vsftpd que son vsftpd.conf(v1 y v2, dependiendo de la configuración que desees),la lista de usuarios por enjaular y su respectivo certificado y llave para que esté bien cifradas, en caso de que no quieras usar los mios te dejo un tutorial en el apartado correspondiente.<p><br>
+
+<p>Por supuesto, también están incluidos Vagrantfile, el archivo que se encarga de levantar con Vagrant (Comando Vagrant Up) las máquinas correspondientes y playbook.yml para realizar las tareas que queremos hacer sobre estas máquinas de manera automática. En Documentos hay enlaces para que empezeís a realizar vuestro propio servidor usando estas magníficas herramientas</p> <br>
+
+<h2> ¿Cuanto tiempo has dedicado a esto? </h2>
+<p> Si soy sincero con ustedes diria que alrededor de unas 20 horas.Productivas alrededor de 6, he tenido problemas y por lo tanto he tenido que documentarme.<p>
+
+			</article>
+			<article>
+				<h2>¿Me explicas el VagrantFile?</h2>
+				<p>Claro, en el primer apartado, llamado hosts he declarado 2 máquinas con sus correspondientes IP </p> <br>
+<p> En el 2 apartado he declarado que su máquina virtual base es ubuntu/xenial64 (Ubuntu16) y a continuación les he indicado que haga un network privado y que su provedor es virtualbox </p><br>
+
+<h2> Ese hosts tiene muy poco código... </h2>
+<p> Normal, solo necesitaba 2 grupos con una máquina cada una y la de mysql es prácticamente opcional, como he dicho varias veces esto es un proyecto que nunca se va a cerrar definitivamente <p> <br>
+
+<h2>¿Me explicas el Playbook? </h2>
+<p> Ningún problema, pero he de decir que apenas acabo de aprender a usarlos, por ejemplo, no sabía hasta tarde la manera de poner una contraseña a un usuario, creia que me lo codificaban para el /etc/shadow y resulta que tenemos que codificarla previamente </p> <br>
+
+<p> El playbook actual realiza las siguientes acciones: Insertar /bin/false en /etc/shells usando el comando lineinfile, transferir los archivos necesarios (vsftpd.conf,certificado y llave ssl y lista de usuarios), crea el usuario vsftpd (el cual tenemos que asignar la contraseña de manera manual debido a limitaciones (por ahora) usando passwd) e instala los paquetes vsftpd y openssl</p><br> 
+			</article>
+			<article>
+				<h2>¿Esa llave y ese certificado son seguros?</h2>
+				<p>Si, son seguros, para todo aquel que no sepa de donde proceden, por lo que te recomiendo que los cambies por los tuyos propios si te vas a quedar con ese servidor,así estarán a tu nombre y serán totalmente para ti.</p><br>
+<h2>¿Como Puedo crear los mios?</h2>
+<p>En primer lugar debes tener instalado Openssl. <p>
+<p>En segundo lugar debes ejecutar el siguiente comando: <p><br>
+<p>openssl req -new -newkey rsa:1024 -days 365 -nodes -x509 -keyout key.key -out pem.pem</p><br>
+<p>Por último, remplaza lo obtenido por lo que viene de serie en este proyecto</p>
+			</article>
+			<article>
+				<h2>¿Como levanto esto?¿Qué comandos debería conocer?</h2>
+				<p>Antes de todo, entra en la carpeta principal, la que tiene el playbook y el Vagrant File y asegurate que tanto Ansible como Vagrant están instalados</p>
+				<p>Selecciona Abrir terminal con el clic derecho, aparecerá el terminal, usa vagrant up para levantar, vagrant halt para apagar, vagrant status para comprobar el estado y vagrant halt para destruir la máquina</p><br>
+				<p>Una vez levantadas las máquinas ejecuta el siguiente comando(sin las comillas): "vagrant ssh-config >> ~/.ssh/config" Enhorabuena, puede acceder via ssh para hacer todo lo que quiera (ssh "nombre de la máquina")</p><br>
+				<p>cuando quieras aplicar los comandos de un playbook sobre una máquina a la que puedas acceder via ssh, las cuales están definidas en el archivo host, debes ejecutar el siguiente comando (sin las comillas): " ansible-playbook -i hosts playbook.yml --sudo " donde playbook.yml es el playbook y hosts el directorio de hosts</p><br>
+				<p>Si quieres cambiar las contraseñas de los usuarios (importante por ahora debido a limitaciones y por medidas de seguridad) entra con ssh transferin y usa sudo passwd vsftpd</p>
+				<p></p>
+			</article>
+		</main>
+		<aside>
+			<div><img src="ftp-carpetas.jpg" width="300" height="210"></div>
+			<div><img src="Ansible.jpeg" width="300" height="210"></div>
+			<div><img src="Vagrant.png" width="300" height="210"></div>
+			<div><p>3-3-2018,Versión 0.1:</p>
+			     <p>Este proyecto está por perfeccionarse</p>
+			     <p>Usarlo con cautela</p></div>
+		</aside>
+	</section>
+	<footer>
+		<p>&copy; Plantilla editada. original realizada por html5-templates | <a href="http://html5-templates.com/" target="_blank" rel="nofollow">HTML5 Templates</a></p>
+		<address>
+			Contact: <a href="mailto:me@htmlg.com">Mail me</a>
+		</address>
+	</footer>
+
+
+</body>
+
+</html>

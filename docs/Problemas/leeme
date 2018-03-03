@@ -1,0 +1,32 @@
+proyecto en github y documentación en github pages
+
+una vez levantadas las maquinas del vagrantfile creado ejecutamos este comando:
+vagrant ssh-config >> ~/.ssh/config
+
+Ejecutamos este comando tras crear el archivo hosts
+ ansible all -i hosts -m ping
+
+a continuación ejecutamos el playbook cuyo pseudocodigo esta ubicado en el fichero con ese nombre
+
+ansible-playbook -i hosts playbook.yml --sudo
+
+
+
+
+
+
+---------------------------------------------problemas------------------------------------
+
+*OJO*
+Te queda aplicarle la seguridad (opcionalmente los usuarios virtuales) y por supuesto, documentarlo.
+
+Error 530 This FTP server is anonymous only.
+
+passwd vsftpd 
+mkdir /home/vsftpd/vsftpd
+sudo chown vsftpd:vsftpd /home/vsftpd/vsftpd
+sudo chmod 766 /home/vsftpd/vsftpd
+sudo chown root /home/vsftpd
+sudo chmod 750 /home/vsftpd
+
+http://vsftpd.beasts.org/vsftpd_conf.html
